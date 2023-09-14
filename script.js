@@ -94,6 +94,11 @@ function handleCheckBoxChange(){
         if(checkbox.checked)
         checkCount++;
     });
+
+    if(passwordLength < checkCount){
+        passwordLength = checkCount;
+        handleSlider();
+    }
 }
 
 allCheckBox.forEach((checkbox)=>{
