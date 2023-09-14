@@ -95,6 +95,7 @@ function handleCheckBoxChange(){
         checkCount++;
     });
 
+    //special case
     if(passwordLength < checkCount){
         passwordLength = checkCount;
         handleSlider();
@@ -116,5 +117,56 @@ copyBtn.addEventListener('click',()=>{
 })
 
 generateBtn.addEventListener('click', () => {
+    //if no checkbox are selected
+    if (checkCount <= 0) return;
 
+    if(passwordLength < checkCount){
+        passwordLength = checkCount;
+        handleSlider();
+    }
+
+    //to find new password
+
+    //1st remove existing password
+    password ="";
+
+    //lets cook password
+    // if(uppercaseCheck.checked){
+    //     password += generateUpperCase();
+    // }
+    // if(lowercaseCheck.checked){
+    //     password += generateLowerCase();
+    // }
+    // if(numbersCheck.checked){
+    //     password += generateRandom();
+    // }
+    // if(symbolsCheck.checked){
+    //     password += generateSymbol();
+    // }
+
+    let funArr = [];
+
+    if(uppercaseCheck.checked)
+        funArr.push(generateUpperCase);
+
+    if(lowercaseCheck.checked)
+        funArr.push(generateLowerCase);
+
+    if(numbersCheck.checked)
+        funArr.push(generateRandom);
+
+    if(symbolsCheck.checked)
+        funArr.push(generateSymbol);
+
+    //compulsory addition
+    for(i=0; i< funArr.length; i++){
+        password += funArr[i]();
+    }
+
+    //remaining addtion
+    for(let i= 0; i < passwordLength-funArr.length;i++){
+        let randIndex = getRandInteger(0, funArr.length);
+        password += funArr[randIndex];
+    }
+    
 })
