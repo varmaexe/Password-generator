@@ -88,7 +88,28 @@ async function copyContent(){
     }, 2000);
 }
 
+function handleCheckBoxChange(){
+    checkCount = 0;
+    allCheckBox.forEach( (checkbox) =>{
+        if(checkbox.checked)
+        checkCount++;
+    });
+}
+
+allCheckBox.forEach((checkbox)=>{
+    checkbox.addEventListener('change',handleCheckBoxChange);
+})
+
 inputSlider.addEventListener('input', (e) => {
     passwordLength = e.target.value;
     handleSlider();
+})
+
+copyBtn.addEventListener('click',()=>{
+    if(passwordDisplay.value)
+    copyContent();
+})
+
+generateBtn.addEventListener('click', () => {
+
 })
