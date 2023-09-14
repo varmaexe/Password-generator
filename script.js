@@ -201,10 +201,10 @@ generateBtn.addEventListener('click', () => {
     console.log("Remaining adddition done");
     //shuffle the password
     password = shufflePassword(Array.from(password));
-    console.log("Shuffling done");
+    // console.log("Shuffling done");
     //show in UI
     passwordDisplay.value = password;
-    console.log("UI adddition done");
+    // console.log("UI adddition done");
     //calculate strength
     calcStrength();
 });
