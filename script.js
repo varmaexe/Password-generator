@@ -150,7 +150,7 @@ generateBtn.addEventListener('click', () => {
     }
 
     // let's start the jouney to find new password
-    console.log("Starting the Journey");
+    // console.log("Starting the Journey");
     //remove old password
     password = "";
 
