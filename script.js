@@ -19,8 +19,8 @@ let password = "";
 let passwordLength = 10;
 let checkCount = 0;
 handleSlider();
-setIndicator("#ccc")
 //ste strength circle color to grey
+setIndicator("#ccc");
 
 
 //set passwordLength
@@ -28,11 +28,14 @@ function handleSlider() {
     inputSlider.value = passwordLength;
     lengthDisplay.innerText = passwordLength;
     //or kuch bhi karna chahiye ? - HW
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize = ( (passwordLength - min)*100/(max - min)) + "% 100%"
 }
 
 function setIndicator(color) {
     indicator.style.backgroundColor = color;
-    //shadow - HW
+    indicator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
 function getRndInteger(min, max) {
@@ -99,7 +102,9 @@ async function copyContent() {
 function shufflePassword(array) {
     //Fisher Yates Method
     for (let i = array.length - 1; i > 0; i--) {
+        //random J, find out using random function
         const j = Math.floor(Math.random() * (i + 1));
+        //swap number at i index and j index
         const temp = array[i];
         array[i] = array[j];
         array[j] = temp;
@@ -151,7 +156,7 @@ generateBtn.addEventListener('click', () => {
     }
 
     // let's start the jouney to find new password
-    // console.log("Starting the Journey");
+    console.log("Starting the Journey");
     //remove old password
     password = "";
 
@@ -191,7 +196,7 @@ generateBtn.addEventListener('click', () => {
     for(let i=0; i<funcArr.length; i++) {
         password += funcArr[i]();
     }
-    // console.log("COmpulsory adddition done");
+    console.log("COmpulsory adddition done");
 
     //remaining adddition
     for(let i=0; i<passwordLength-funcArr.length; i++) {
@@ -202,10 +207,10 @@ generateBtn.addEventListener('click', () => {
     console.log("Remaining adddition done");
     //shuffle the password
     password = shufflePassword(Array.from(password));
-    // console.log("Shuffling done");
+    console.log("Shuffling done");
     //show in UI
     passwordDisplay.value = password;
-    // console.log("UI adddition done");
+    console.log("UI adddition done");
     //calculate strength
     calcStrength();
 });
