@@ -21,7 +21,7 @@ The "Password Generator" is a web application designed to help users create secu
 
 ## Demo
 
-You can try out the live demo of the Password Generator here: [Demo Link](#)
+You can try out the live demo of the Password Generator here: https://varmaexe.github.io/password-generator/
 
 ## Features
 
